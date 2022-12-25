@@ -32,7 +32,8 @@ def generate_ics():
 
         for d in dates:
             event = Event()
-            event['uid'] = f'muellkalender2023-{calname.encode("ascii", errors="ignore").decode()}-{d.year}{d.month}{d.day}'
+            event[
+                'uid'] = f'muellkalender2023-{calname.encode("ascii", errors="ignore").decode()}-{d.year}{d.month:02}{d.day:02}'
             event.add('summary', calname)
             event.add('description', f"Bezirk {bezirk}")
             event.add('dtstart', d)
