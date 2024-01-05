@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 
 from icalendar import Calendar, Event
 
-year = 2023
+year = 2024
 bezirk = "3A1"
 
 local_tzinfo = datetime.now().astimezone().tzinfo
@@ -11,11 +11,18 @@ local_tzinfo = datetime.now().astimezone().tzinfo
 # - just list the days component of all events
 # - separate events in different months by commas
 # - make sure to have 12 months max
-calendar_data = {
+calendar_data_2023 = {
     'Restmüll': "4 18, 1 15, 1 15 29, 13 26, 10 24, 7 21, 5 19, 2 16 30, 13 27, 11 25, 8 22, 6 20",
     'Gelber Sack': "4, 1, 1 29, 26, 24, 21, 19, 16, 13, 11, 8, 6",
     'Papiertonne': "25, 23, 22, 19, 17, 14, 12, 9, 6, 5, 2 29, 28",
     'Biotonne': "11 25, 8 23, 8 22, 5 19, 4 17, 1 14 28, 12 26, 9 23, 6 20, 5 18, 2 15 29, 13 28",
+}
+
+calendar_data = {
+    'Restmüll': "4 17 31, 15 28, 13 27, 10 24, 8 23, 5 19, 3 17 31, 14 28, 11 25, 9 23, 6 20, 4 18",
+    'Gelber Sack': "4 31, 28, 26, 24, 23, 19, 17, 14, 11, 9, 6, 4",
+    'Papiertonne': "24, 21, 20, 17, 15, 12, 10, 7, 4, 2 30, 27, 24",
+    'Biotonne': "10 24, 7 21, 6 20, 4 17, 2 15 29, 12 26, 10 24, 7 21, 4 18, 2 16 30, 13 27, 11 24",
 }
 
 
@@ -36,7 +43,7 @@ def generate_ics():
 
                 event = Event()
                 ascii_calname = calname.encode("ascii", errors="ignore").decode()
-                event['uid'] = f'muellkalender2023-{ascii_calname}-{d.year}{d.month:02}{d.day:02}'
+                event['uid'] = f'muellkalender2024-{ascii_calname}-{d.year}{d.month:02}{d.day:02}'
                 event.add('summary', calname)
                 event.add('description', f"Bezirk {bezirk}")
                 event.add('dtstart', d)
